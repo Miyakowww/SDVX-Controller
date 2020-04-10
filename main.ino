@@ -20,6 +20,8 @@ int encStatL, encStatR;
 int lsL, lsR;
 int rotateSpeed = 3;
 
+int s, a, b, c, d, l, r;
+
 void setup() {
   pinMode(START, INPUT);
   pinMode(BT_A, INPUT);
@@ -32,6 +34,7 @@ void setup() {
   pinMode(Vol_L_B, INPUT);
   pinMode(Vol_R_A, INPUT);
   pinMode(Vol_R_B, INPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
 
   encStatL = GetStep(digitalRead(Vol_L_A), digitalRead(Vol_L_B));
   encStatR = GetStep(digitalRead(Vol_R_A), digitalRead(Vol_R_B));
@@ -42,22 +45,76 @@ void setup() {
 
 void loop() {
   Mouse.move(GetVolL() * rotateSpeed, GetVolR() * rotateSpeed);
-
-  TestKey(START, '6');
-  TestKey(BT_A, 'a');
-  TestKey(BT_B, 'b');
-  TestKey(BT_C, 'c');
-  TestKey(BT_D, 'd');
-  TestKey(FX_L, 'l');
-  TestKey(FX_R, 'r');
-}
-
-void TestKey(int pin, char key){
-  if(digitalRead(pin)){
-    Keyboard.press(key);
+  
+  if(digitalRead(START)){
+    if(!s){
+      Keyboard.press('6');
+      s = 1;
+    }
   }
-  else{
-    Keyboard.release(key);
+  else if(s){
+    Keyboard.release('6');
+    s = 0;
+  }
+  if(digitalRead(BT_A)){
+    if(!a){
+      Keyboard.press('a');
+      a = 1;
+    }
+  }
+  else if(a){
+    Keyboard.release('a');
+    a = 0;
+  }
+  if(digitalRead(BT_B)){
+    if(!b){
+      Keyboard.press('b');
+      b = 1;
+    }
+  }
+  else if(b){
+    Keyboard.release('b');
+    b = 0;
+  }
+  if(digitalRead(BT_C)){
+    if(!c){
+      Keyboard.press('c');
+      c = 1;
+    }
+  }
+  else if(c){
+    Keyboard.release('c');
+    c = 0;
+  }
+  if(digitalRead(BT_D)){
+    if(!d){
+      Keyboard.press('d');
+      d = 1;
+    }
+  }
+  else if(d){
+    Keyboard.release('d');
+    d = 0;
+  }
+  if(digitalRead(FX_L)){
+    if(!l){
+      Keyboard.press('l');
+      l = 1;
+    }
+  }
+  else if(l){
+    Keyboard.release('l');
+    l = 0;
+  }
+  if(digitalRead(FX_R)){
+    if(!r){
+      Keyboard.press('r');
+      r = 1;
+    }
+  }
+  else if(r){
+    Keyboard.release('r');
+    r = 0;
   }
 }
 
