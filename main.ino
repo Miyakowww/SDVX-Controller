@@ -18,7 +18,7 @@
 
 int encStatL, encStatR;
 int lsL, lsR;
-int rotateSpeed = 3;
+const int rotateSpeed = 3;
 
 int s, a, b, c, d, l, r;
 
